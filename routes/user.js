@@ -4,7 +4,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
-router.get("/getAll", async (req, res) => {
+router.get("/all", async (req, res) => {
   try {
     users = await User.find();
     res.status(200).json(users);
@@ -12,7 +12,7 @@ router.get("/getAll", async (req, res) => {
     res.status(400).json(err);
   }
 });
-router.get("/Byid/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     id = req.params.id;
     user = await User.findById({ _id: id });
@@ -34,7 +34,7 @@ router.post("/add", async (req, res) => {
 router.post("/register", async (req, res) => {
   try {
     user = new User(req.body);
-    salt = bcrypt.genSaltSync(7);
+    salt = bcrypt.genSaltSync(10);
     cryptedPass = await bcrypt.hashSync(user.password, salt);
     user.password = cryptedPass;
     savedUser = await user.save();
