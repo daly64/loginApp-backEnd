@@ -16,9 +16,9 @@ router.get("get/:id", async (req, res) => {
   try {
     id = req.params.id;
     user = await User.findById({ _id: id });
-    res.status(200).send(user);
+    res.status(200).json(user);
   } catch (err) {
-    res.status(400).send(err);
+    res.status(400).json(err);
   }
 });
 
@@ -39,9 +39,9 @@ router.post("/register", async (req, res) => {
     cryptedPass = await bcrypt.hashSync(user.password, salt);
     user.password = cryptedPass;
     savedUser = await user.save();
-    res.status(200).send(savedUser);
+    res.status(200).json(savedUser);
   } catch (err) {
-    res.status(400).send(err);
+    res.status(400).json(err);
   }
 });
 router.post("/login", async (req, res) => {
@@ -54,13 +54,13 @@ router.post("/login", async (req, res) => {
     } else {
       validpassword = await bcrypt.compareSync(data.password, user.password);
       if (!validpassword) {
-        res.status(404).send(" password invalid");
+        res.status(404).json(" password invalid");
       } else {
-        res.status(200).send(user.name);
+        res.status(200).json(user.name);
       }
     }
   } catch (error) {
-    res.status(400).send(err);
+    res.status(400).json(err);
   }
 });
 
@@ -68,9 +68,9 @@ router.delete("/delete/:id", async (req, res) => {
   try {
     id = req.params.id;
     user = await User.findByIdAndDelete({ _id: id });
-    res.status(200).send(user);
+    res.status(200).json(user);
   } catch (err) {
-    res.status(400).send(err);
+    res.status(400).json(err);
   }
 });
 router.put("/update/:id", async (req, res) => {
@@ -78,9 +78,9 @@ router.put("/update/:id", async (req, res) => {
     id = req.params.id;
     user = req.body;
     updatedUser = await User.findByIdAndUpdate({ _id: id }, user);
-    res.status(200).send(await User.findById({ _id: id }));
+    res.status(200).json(await User.findById({ _id: id }));
   } catch (error) {
-    res.status(400).send(err);
+    res.status(400).json(err);
   }
 });
 
