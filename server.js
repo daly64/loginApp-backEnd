@@ -21,7 +21,8 @@ app.get("/", (req, res) => {
 </head>
 <body>
 
-<h1>loginApp REST API port = ${port}</h1>
+<h1>loginApp REST API</h1>
+<h2> current url ${window.location.href}</h2>
 <h2><a href="/users"> Users </a></h2>
 
 <h4>/users get all </h4>
