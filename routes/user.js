@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     res.status(400).json(err);
   }
 });
-router.get("get/:id", async (req, res) => {
+router.get("/get/:id", async (req, res) => {
   try {
     id = req.params.id;
     user = await User.findById({ _id: id });
