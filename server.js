@@ -22,7 +22,16 @@ app.get("/", (req, res) => {
 <body>
 
 <h1>loginApp REST API port = ${port}</h1>
-<h2><a href="/users/all"> Users </a></h2>
+<h2><a href="/users"> Users </a></h2>
+
+<h4>/users get all </h4>
+<h4>/users/get/:id get by id </h4>
+
+<h4>/users/register register user </h4>
+<h4>/users/login login user </h4>
+<h4>/users/delete/:id delete user </h4>
+<h4>/users/update/:id update user </h4>
+
 </body>
 </html>    
     `);

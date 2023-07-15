@@ -4,7 +4,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
-router.get("/all", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     users = await User.find();
     res.status(200).json(users);
@@ -12,7 +12,7 @@ router.get("/all", async (req, res) => {
     res.status(400).json(err);
   }
 });
-router.get("/:id", async (req, res) => {
+router.get("get/:id", async (req, res) => {
   try {
     id = req.params.id;
     user = await User.findById({ _id: id });
@@ -22,7 +22,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/add", async (req, res) => {
+/* router.post("/add", async (req, res) => {
   try {
     user = new User(req.body);
     savedUser = await user.save();
@@ -30,7 +30,8 @@ router.post("/add", async (req, res) => {
   } catch (err) {
     res.status(400).send(err);
   }
-});
+}); */
+
 router.post("/register", async (req, res) => {
   try {
     user = new User(req.body);
