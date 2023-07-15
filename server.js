@@ -1,6 +1,9 @@
 const express = require("express");
 require("./config/connect");
+const cors = require("cors")
 
+app.use(cors())
+// app.use(cors({origin: '*'}))
 const userRouter = require("./routes/user");
 const port = process.env.PORT || 3000;
 
