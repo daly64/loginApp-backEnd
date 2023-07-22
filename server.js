@@ -38,6 +38,7 @@ app.get("/", (req, res) => {
 <h4>/users/login login user </h4>
 <h4>/users/delete/:id delete user </h4>
 <h4>/users/update/:id update user </h4>
+<h4>/getUserImage/:fileName get user image </h4>
 
 </body>
 </html>    
