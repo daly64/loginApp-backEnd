@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const User = require("../models/user");
 const multer = require("multer");
+const fs = require("fs-extra");
 
 let fileName = "";
 
@@ -85,6 +86,7 @@ router.delete("/delete/:id", async (req, res) => {
   try {
     id = req.params.id;
     user = await User.findByIdAndDelete({ _id: id });
+    await fs.remove(`./uploades/users/${user.image}`);
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
