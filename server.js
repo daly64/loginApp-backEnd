@@ -1,7 +1,6 @@
 const express = require("express");
 require("./config/connect");
-const cors = require("cors")
-
+const cors = require("cors");
 
 const userRouter = require("./routes/user");
 const port = process.env.PORT || 3000;
@@ -11,10 +10,12 @@ app.listen(port);
 console.log("server connected");
 app.use(express.json());
 
-app.use(cors())
+app.use(cors());
 // app.use(cors({origin: '*'}))
 
 app.use("/users", userRouter);
+
+app.use("/getUserImage", express.static("./uploades/users"));
 
 app.get("/", (req, res) => {
   res.send(`
