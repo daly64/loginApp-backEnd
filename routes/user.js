@@ -56,7 +56,7 @@ router.post("/register", upload.any("image"), async (req, res) => {
     cryptedPass = await bcrypt.hashSync(user.password, salt);
     user.password = cryptedPass;
     user.image = fileName;
-    user.imageUrl = `${req.hostname}/getUserImage/${fileName}`;
+    user.imageUrl = `https://${req.hostname}/getUserImage/${fileName}`;
     savedUser = await user.save();
     res.status(200).json(savedUser);
   } catch (err) {

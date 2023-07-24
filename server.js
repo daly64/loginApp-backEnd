@@ -19,7 +19,6 @@ app.use("/getUserImage", express.static("./uploades/users"));
 
 app.get("/", (req, res) => {
 
-  console.log(req.hostname);
   res.send(`
     <!DOCTYPE html>
 <html lang="en">
