@@ -18,6 +18,8 @@ app.use("/users", userRouter);
 app.use("/getUserImage", express.static("./uploades/users"));
 
 app.get("/", (req, res) => {
+  console.log(req.url);
+  console.log(req.hostname);
   res.send(`
     <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +30,7 @@ app.get("/", (req, res) => {
 <body>
 
 <h1>loginApp REST API</h1>
+<h4>${req.hostname}</h4>
 
 <h2><a href="/users"> Users </a></h2>
 
